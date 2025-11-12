@@ -431,7 +431,7 @@ This instance is configured for standalone deployment with:
 
 This Umami Analytics fork is part of the First8 Marketing analytics and personalization ecosystem. Explore related public repositories:
 
-- **[Umami Analytics](https://github.com/First8Marketing/umami)** - This repository
+- **[First8 Marketing Umami Analytics](https://github.com/First8Marketing/first8marketing-umami)** - This repository
   - Privacy-focused analytics platform
   - Self-hosted, cookie-free analytics
   - GDPR/CCPA compliant by design
