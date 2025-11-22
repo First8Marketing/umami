@@ -8,6 +8,7 @@ import {
   Icon,
   Column,
   Heading,
+  Button,
 } from '@umami/react-zen';
 import { useRouter } from 'next/navigation';
 import { useMessages, useUpdateQuery } from '@/components/hooks';
@@ -65,6 +66,14 @@ export function LoginForm() {
           </FormSubmitButton>
         </FormButtons>
       </Form>
+
+      <Button
+        variant="secondary"
+        onClick={() => (window.location.href = '/api/sso/login')}
+        style={{ width: '100%', marginTop: '1rem' }}
+      >
+        Sign in with SSO
+      </Button>
     </Column>
   );
 }

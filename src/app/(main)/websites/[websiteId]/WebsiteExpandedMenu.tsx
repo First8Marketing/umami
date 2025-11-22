@@ -32,7 +32,7 @@ export function WebsiteExpandedMenu({
   const { formatMessage, labels } = useMessages();
   const {
     updateParams,
-    query: { view },
+    query: { view, websiteId },
   } = useNavigation();
 
   const filterExcluded = (item: { id: string }) => !excludedIds.includes(item.id);
@@ -96,6 +96,36 @@ export function WebsiteExpandedMenu({
         },
       ].filter(filterExcluded),
     },
+    // E-commerce Analytics group, now right after Sources
+    // Behavior section: user journey and conversion analytics
+    ...(websiteId
+      ? [
+          {
+            label: 'Behavior',
+            items: [
+              {
+                id: 'category-funnel',
+                label: 'Category Funnel',
+                path: `/analytics/category-funnel?websiteId=${websiteId}`,
+                icon: <Tag />,
+              },
+              {
+                id: 'product-performance',
+                label: 'Product Performance',
+                path: `/analytics/product-performance?websiteId=${websiteId}`,
+                icon: <Tag />,
+              },
+              {
+                id: 'checkout-abandonment',
+                label: 'Checkout Abandonment',
+                path: `/analytics/checkout-abandonment?websiteId=${websiteId}`,
+                icon: <Tag />,
+              },
+              // Optionally, add other behavior analytics here
+            ],
+          },
+        ]
+      : []),
     {
       label: formatMessage(labels.location),
       items: [
@@ -178,6 +208,9 @@ export function WebsiteExpandedMenu({
       ].filter(filterExcluded),
     },
   ];
+
+  // E-commerce Analytics group
+  // (Removed duplicate websiteId and items.push logic)
 
   return <SideMenu items={items} selectedKey={view} onItemClick={onItemClick} />;
 }

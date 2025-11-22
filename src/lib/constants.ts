@@ -16,6 +16,17 @@ export const FAVICON_URL = 'https://icons.duckduckgo.com/ip3/{{domain}}.ico';
 export const LINKS_URL = `${globalThis?.location?.origin}/q`;
 export const PIXELS_URL = `${globalThis?.location?.origin}/p`;
 
+// SSO Configuration
+export const SSO_TOKEN_HEADER = 'x-umami-sso-token';
+export const SSO_ISSUER = process.env.SSO_ISSUER || 'https://sso.first8marketing.com';
+export const SSO_CLIENT_ID = process.env.SSO_CLIENT_ID || 'first8marketing-umami';
+export const SSO_REDIRECT_URI =
+  process.env.SSO_REDIRECT_URI || `${globalThis?.location?.origin}/api/auth/sso/callback`;
+export const SSO_AUTH_ENDPOINT = `${SSO_ISSUER}/authorize`;
+export const SSO_TOKEN_ENDPOINT = `${SSO_ISSUER}/token`;
+export const SSO_USERINFO_ENDPOINT = `${SSO_ISSUER}/userinfo`;
+export const SSO_JWKS_ENDPOINT = `${SSO_ISSUER}/.well-known/jwks.json`;
+
 export const DEFAULT_LOCALE = 'en-US';
 export const DEFAULT_THEME = 'light';
 export const DEFAULT_ANIMATION_DURATION = 300;

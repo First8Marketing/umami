@@ -42,6 +42,8 @@ export function SideNav(props: SidebarProps) {
       path: '/pixels',
       icon: <Grid2x2 />,
     },
+    // --- First8Marketing Unique Analytics Features ---
+    // Analytics links removed; now under website context menu
   ];
 
   const handleSelect = (id: Key) => {
@@ -71,6 +73,7 @@ export function SideNav(props: SidebarProps) {
                 icon={icon}
                 isSelected={pathname.includes(path)}
                 role="button"
+                data-test={`sidebar-${id}`}
               />
             </Link>
           );

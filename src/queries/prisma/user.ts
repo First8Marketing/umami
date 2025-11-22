@@ -22,6 +22,9 @@ async function findUser(criteria: Prisma.UserFindUniqueArgs, options: GetUserOpt
     select: {
       id: true,
       username: true,
+      email: true,
+      displayName: true,
+      ssoSubject: true,
       password: includePassword,
       role: true,
       createdAt: true,
@@ -42,6 +45,10 @@ export async function getUser(userId: string, options: GetUserOptions = {}) {
 
 export async function getUserByUsername(username: string, options: GetUserOptions = {}) {
   return findUser({ where: { username } }, options);
+}
+
+export async function getUserByEmail(email: string, options: GetUserOptions = {}) {
+  return findUser({ where: { email } }, options);
 }
 
 export async function getUsers(criteria: UserFindManyArgs, filters: QueryFilters = {}) {
@@ -68,17 +75,30 @@ export async function getUsers(criteria: UserFindManyArgs, filters: QueryFilters
 }
 
 export async function createUser(data: {
-  id: string;
+  id?: string;
   username: string;
-  password: string;
+  password?: string | null;
   role: Role;
+  email?: string;
+  name?: string;
+  picture?: string | null;
+  ssoSubject?: string;
 }) {
   return prisma.client.user.create({
-    data,
+    data: {
+      ...data,
+      id: data.id || undefined,
+      password: data.password || null,
+    },
     select: {
       id: true,
       username: true,
+      email: true,
+      displayName: true,
+      picture: true,
+      ssoSubject: true,
       role: true,
+      createdAt: true,
     },
   });
 }

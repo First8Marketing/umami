@@ -11,7 +11,7 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "next dev -p 3001 --turbo",
+    "dev": "next dev --turbo",
     "build": "npm-run-all check-env build-db check-db build-tracker build-geo build-app",
     "start": "next start",
     "build-docker": "npm-run-all build-db build-tracker build-geo build-app",
@@ -47,7 +47,9 @@
     "postbuild": "node scripts/postbuild.js",
     "test": "jest",
     "cypress-open": "cypress open cypress run",
-    "cypress-run": "cypress run cypress run"
+    "cypress-run": "cypress run cypress run",
+    "generate-mock-data": "node scripts/generate-mock-data.js",
+    "mock-data:direct": "node scripts/direct-mock-data-generator.js"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
@@ -129,7 +131,8 @@
     "ua-parser-js": "^2.0.6",
     "uuid": "^11.1.0",
     "zod": "^4.1.12",
-    "zustand": "^5.0.8"
+    "zustand": "^5.0.8",
+    "jose": "^5.9.6"
   },
   "devDependencies": {
     "@formatjs/cli": "^4.2.29",
